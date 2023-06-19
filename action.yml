@@ -29,6 +29,7 @@ runs:
   using: 'composite'
   steps:
     - name: check-owner-name
+      shell: bash
       run: |
         echo use owner name ${{ github.repository_owner }}
 
