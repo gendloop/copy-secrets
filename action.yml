@@ -28,7 +28,8 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: copy-secrets
+    - name: copy-secrets-to-team
+      if: ${{ inputs.team }} != ''
       uses: philips-software/Repo-Secret-Manager@main
       with:
         action: create
@@ -37,3 +38,13 @@ runs:
         secret-values: ${{ inputs.secret_values }}
         repo: ${{ inputs.repo }}
         team: ${{ inputs.team }}
+    
+    - name: copy-secrets-to-person
+      if: ${{ inputs.team }} == ''
+      uses: philips-software/Repo-Secret-Manager@main
+      with:
+        action: create
+        token: ${{ inputs.token }}
+        secret-names: ${{ inputs.secret_names }}
+        secret-values: ${{ inputs.secret_values }}
+        repo: ${{ inputs.repo }}
