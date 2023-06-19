@@ -28,8 +28,12 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: check-owner-name
+      run: |
+        echo use owner name ${{ github.repository_owner }}
+
     - name: copy-secrets-to-team
-      if: ${{ inputs.team }} != 'none'
+      if: ${{ ${{ inputs.team }} != 'none' }}
       uses: philips-software/Repo-Secret-Manager@main
       with:
         action: create
@@ -40,7 +44,7 @@ runs:
         team: ${{ inputs.team }}
     
     - name: copy-secrets-to-person
-      if: ${{ inputs.team }} == 'none'
+      if: ${{ ${{ inputs.team }} == 'none' }}
       uses: philips-software/Repo-Secret-Manager@main
       with:
         action: create
