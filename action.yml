@@ -19,11 +19,11 @@ inputs:
   secret_names:
     description: 'Secret Names (e.g. SECRET1,SECRET2)'
     required: false
-    default: 'GENDLOOP_ACCESS_TOKEN'
+    default: ''
   secret_values:
     description: 'Secret Values (e.g. Value1,Value2)'
     required: false
-    default: ${{ inputs.token }}
+    default: ''
 
 runs:
   using: 'composite'
@@ -32,7 +32,7 @@ runs:
       uses: philips-software/Repo-Secret-Manager@main
         with:
           action: create
-          token: ${{ secrets.GENDLOOP_ACCESS_TOKEN }}
+          token: ${{ inputs.token }}
           secret-names: ${{ inputs.secret_names }}
           secret-values: ${{ inputs.secret_values }}
           repo: ${{ inputs.repo }}
