@@ -12,14 +12,18 @@ inputs:
     description: 'Team Name'
     required: false
     default: ''
-  sercret_names:
+  token:
+    description: 'Personal Token'
+    required: true
+    default: ''
+  secret_names:
     description: 'Secret Names (e.g. SECRET1,SECRET2)'
     required: false
     default: 'GENDLOOP_ACCESS_TOKEN'
-  sercret_values:
+  secret_values:
     description: 'Secret Values (e.g. Value1,Value2)'
     required: false
-    default: ${{ secrets.GENDLOOP_ACCESS_TOKEN }}
+    default: ${{ inputs.token }}
 
 runs:
   using: 'composite'
@@ -29,7 +33,7 @@ runs:
         with:
           action: create
           token: ${{ secrets.GENDLOOP_ACCESS_TOKEN }}
-          secret-names: ${{ inputs.sercret_names }}
-          secret-values: ${{ inputs.secrets.values }}
+          secret-names: ${{ inputs.secret_names }}
+          secret-values: ${{ inputs.secret_values }}
           repo: ${{ inputs.repo }}
           team: ${{ inputs.team }}
