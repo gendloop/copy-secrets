@@ -30,10 +30,10 @@ runs:
   steps:
     - name: copy-secrets
       uses: philips-software/Repo-Secret-Manager@main
-        with:
-          action: create
-          token: ${{ inputs.token }}
-          secret-names: ${{ inputs.secret_names }}
-          secret-values: ${{ inputs.secret_values }}
-          repo: ${{ inputs.repo }}
-          team: ${{ inputs.team }}
+      with:
+        action: create
+        token: ${{ inputs.token }}
+        secret-names: ${{ inputs.secret_names }}
+        secret-values: ${{ inputs.secret_values }}
+        repo: ${{ inputs.repo }}
+        team: ${{ inputs.team }}
