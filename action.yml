@@ -8,10 +8,10 @@ inputs:
     required: true
     default: ''
 # Optional
-  team:
-    description: 'Team Name'
+  repo_owner:
+    description: 'Repo Owner'
     required: false
-    default: ''
+    default: ${{ github.repository_owner }}
   token:
     description: 'Personal Token'
     required: true
@@ -31,9 +31,9 @@ runs:
     - name: check-owner-name
       shell: bash
       run: |
-        echo use owner name ${{ github.repository_owner }}
+        echo use owner name ${{ inputs.repo_owner }}
 
-    - name: copy-secrets-to-person
+    - name: copy-secrets
       uses: philips-software/Repo-Secret-Manager@main
       with:
         action: create
@@ -41,3 +41,4 @@ runs:
         secret-names: ${{ inputs.secret_names }}
         secret-values: ${{ inputs.secret_values }}
         repo: ${{ inputs.repo }}
+        repo_owner: ${{ inputs.repo_owner }}
