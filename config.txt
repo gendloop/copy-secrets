@@ -1,0 +1,5 @@
+
+PROJECT_NAME=copy-secrets
+copy-secrets_VERSION_MAJOR=1
+copy-secrets_VERSION_MINOR=0
+copy-secrets_VERSION_PATCH=0
