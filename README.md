@@ -4,4 +4,4 @@ Action template
 
 ## Usage
 
-[Copy_Secrets.yml](.github/workflows/Copy_Secrets.yml) 
+[Copy_Secrets.yml](.github/workflows/Copy_Secrets.yml)
